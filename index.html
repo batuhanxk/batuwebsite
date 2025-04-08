@@ -61,15 +61,22 @@
     <script>
         const noButton = document.getElementById("noButton");
 
+        // Butonun hareket etmesini sağlayacak fonksiyon
         function moveButton() {
-            const maxX = window.innerWidth - 1000;
-            const maxY = window.innerHeight - 1000;
-            const x = Math.random() * maxX - (window.innerWidth / 4) + 175;
-            const y = Math.random() * maxY - (window.innerHeight / 4) + 175;
+            const maxX = window.innerWidth - noButton.offsetWidth - 50; // Ekranın genişliği - butonun genişliği
+            const maxY = window.innerHeight - noButton.offsetHeight - 50; // Ekranın yüksekliği - butonun yüksekliği
+            const x = Math.random() * maxX; // X koordinatını rastgele belirleme
+            const y = Math.random() * maxY; // Y koordinatını rastgele belirleme
+
+            // Butonun yerini değiştirme
             noButton.style.transform = `translate(${x}px, ${y}px)`;
         }
 
+        // Fare ile üzerine gelindiğinde çalışacak fonksiyon
         noButton.addEventListener("mouseover", moveButton);
+
+        // Mobil cihazlar için dokunmatik olayları da ekliyoruz
+        noButton.addEventListener("touchstart", moveButton);
     </script>
 </body>
 </html>
